@@ -11,6 +11,7 @@ const signup = async (req, res) => {
   try {
     const user = await User.create(req.body);
     const token = await newToken(user);
+    console.log('sdiulhchufchdscyfgsdyucgusdhuydchuydhusuhu')
     return res.status(201).json({ data: {token} });
   } catch (err) {
     return res.status(500).json({status: "failed", message: "Something went wrong"});
@@ -34,7 +35,7 @@ const signin = async (req, res) => {
 
     try{
         const match = await user.checkPassword(req.body.password);
-        console.log("match", match);
+        // console.log("match", match);
         if(!match) return res.status(401).json({status: "failed", message : "Your password or email is incorrect"}); 
     } 
     catch (error){

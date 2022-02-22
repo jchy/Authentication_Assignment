@@ -23,12 +23,12 @@ const protect = async (req, res, next) => {
         });
     };
     const token = bearer.split('Bearer ')[1].trim();
-    console.log(token);
+    // console.log(token);
 
     let payload;
     try {
         payload = await verifyToken(token);
-        console.log(payload,"klmkknbjhgvfxd");
+        // console.log(payload,"klmkknbjhgvfxd");
     } catch (error) {
         return res.status(401).json({
             status: 'failed',
@@ -38,7 +38,7 @@ const protect = async (req, res, next) => {
 
     let user;
     try {
-        console.log("payload",payload);
+        // console.log("payload",payload);
         user = User.findById(payload.id).lean().exec();
     } catch (error) {
         return res.status(500).json({status: 'failed', message:"Something went wrong in finding user by ID"})
